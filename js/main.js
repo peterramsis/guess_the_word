@@ -30,7 +30,27 @@ function generateInput(){
         inputContainer.children[0].children[1].focus();
     }
 
+    const inputDisabledDiv = document.querySelectorAll(".disabled_input input");
+
+inputDisabledDiv.forEach(input => {
+    input.disabled = true;
+});
+
+const inputs =document.querySelectorAll("input");
+
+inputs.forEach((input , index) => {  
+    input.addEventListener("input", function(event){
+        this.value = this.value.toUpperCase();
+        console.log(index);
+
+        const inputIndex = inputs[index + 1];
+
+        if(inputIndex) inputIndex.focus();
+    })
+});
 }
+
+
 
 
 
